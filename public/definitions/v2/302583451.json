@@ -1,15 +1,18 @@
 {
-    "name": "Pico 3x3 Macropad",
-    "vendorId": "0x1209",
-    "productId": "0x0E9B",
-    "matrix": { "rows": 3, "cols": 3 },
-    "layouts": {
-        "keymap": [
-            ["0,0", "0,1", "0,2"],
-            ["1,0", "1,1", "1,2"],
-            ["2,0", "2,1", "2,2"]
-        ]
-    },
-    "menus": [],
-    "keycodes": []
+  "name": "Pico 3x3 Macropad",
+  "vendorProductId": 302583451,
+  "firmwareVersion": 0,
+  "menus": [],
+  "keycodes": [],
+  "matrix": {
+    "rows": 3,
+    "cols": 3
+  },
+  "layouts": {
+    "keymap": [
+      ["0,0", "0,1", "0,2"],
+      ["1,0", "1,1", "1,2"],
+      ["2,0", "2,1", "2,2"]
+    ]
+  }
 }

@@ -24,9 +24,17 @@ export const getRecognisedDevices = async (
   forceRequest = false,
 ) => {
   const usbDevices = await scanDevices(forceRequest);
+  console.log('All USB HID Devices found:', usbDevices);
+  console.log('Supported VPID Map:', vpidMap);
   return usbDevices.filter((device) => {
+    const vpid = getVendorProductId(device.vendorId, device.productId);
     const validVendorProduct = idExists(device, vpidMap);
+    console.log(`Checking device: ${device.productName} (VPID: ${vpid}), Supported: ${!!validVendorProduct}`);
     // attempt connection
-    return validVendorProduct && canConnect(device);
+    const connected = validVendorProduct && canConnect(device);
+    if (validVendorProduct) {
+        console.log(`Device support match found! canConnect: ${canConnect(device)}`);
+    }
+    return connected;
   });
 };
