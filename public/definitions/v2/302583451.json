@@ -1,9 +1,6 @@
 {
   "name": "Pico 3x3 Macropad",
   "vendorProductId": 302583451,
-  "firmwareVersion": 0,
-  "menus": [],
-  "keycodes": [],
   "matrix": {
     "rows": 3,
     "cols": 3
