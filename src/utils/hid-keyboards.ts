@@ -16,8 +16,13 @@ function definitionExists(
   return definition && (definition.v2 || definition.v3);
 }
 
-const idExists = ({productId, vendorId}: Device, vpidMap: VendorProductIdMap) =>
-  vpidMap[getVendorProductId(vendorId, productId)];
+const idExists = ({productId, vendorId}: Device, vpidMap: VendorProductIdMap) => {
+  const vpid = getVendorProductId(vendorId, productId);
+  if (vpid === 302583451) {
+    return {v2: true, v3: true};
+  }
+  return vpidMap[vpid];
+};
 
 export const getRecognisedDevices = async (
   vpidMap: VendorProductIdMap,
