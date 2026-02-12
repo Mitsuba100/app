@@ -68,6 +68,7 @@ const selectConnectedDevice =
       await dispatch(loadLayoutOptions());
 
       const {protocol} = connectedDevice;
+      console.log(`Corey Debug - Device Protocol: ${protocol}`);
       try {
         if (protocol < 11) {
           // John you drongo, don't trust the compiler, dispatches are totes awaitable for async thunks
@@ -78,6 +79,7 @@ const selectConnectedDevice =
           await dispatch(updateV3MenuData(connectedDevice));
         }
       } catch (e) {
+        console.error('Corey Debug - Loading lighting/menu data failed:', e);
         dispatch(
           logAppError({
             message: 'Loading lighting/menu data failed',
