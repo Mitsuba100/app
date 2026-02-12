@@ -67,10 +67,14 @@ export async function syncStore(): Promise<DefinitionIndex> {
     // Get hash file
     //    const hash = await (await fetch('/definitions/hash.json')).json();
     const hash = document.getElementById('definition_hash')?.dataset.hash || '';
+    console.log('DOM Hash:', hash);
+    console.log('Store Hash:', currentDefinitionIndex.hash);
 
-    if (hash === currentDefinitionIndex.hash) {
+    if (hash === currentDefinitionIndex.hash && hash !== '') {
+      console.log('Hash matched, skipping definition reload.');
       return currentDefinitionIndex;
     }
+    console.log('Hash mismatch or empty, reloading definitions...');
     // Get definition index file
     const response = await fetch('/definitions/supported_kbs.json', {
       cache: 'reload',
